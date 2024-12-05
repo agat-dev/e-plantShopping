@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./ProductList.css";
-import CartItem from "./CartItem";
-import { addItem } from "./CartSlice";
-import { useDispatch, useSelector } from "react-redux";
+
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './ProductList.css'
+import CartItem from './CartItem';
+import { addItem } from './CartSlice';
+
+
 
 function ProductList() {
   const [showCart, setShowCart] = useState(false);
@@ -363,36 +366,24 @@ function ProductList() {
         <div className="product-grid">
           {plantsArray.map((category, index) => (
             <div key={index}>
-              <h1>
-                <div>{category.category}</div>
-              </h1>
-              <div className="product-list">
-                {category.plants.map((plant, plantIndex) => (
-                  <div className="product-card" key={plantIndex}>
-                    <img
-                      className="product-image"
-                      src={plant.image}
-                      alt={plant.name}
-                    />
-                    <div className="product-title">{plant.name}</div>
-                    <div className="product-description">
-                      {plant.description}
+                <h1><div>{category.category}</div></h1>
+                <div className="product-list">
+                    {category.plants.map((plant, plantIndex) => (
+                        
+                    <div className="product-card" key={plantIndex}>
+                        <img className="product-image" src={plant.image} alt={plant.name} />
+                        <div className="product-title">{plant.name}</div>
+                        <div className="product-description">{plant.description}</div>
+                        <div className="product-cost">{plant.cost}</div>
+                        {/*Similarly like the above plant.name show other details like total cost of the products added in the cart*/}
+                        {/*Change le texte du bouton Add to cart en Added to cart quand le bouton est cliqué */}
+                        {addedToCart[plant.name] ? ( // Check if the product is added to cart
+                        <button className="product-button" disabled>Added to Cart</button> // Disable the button if the product is added to cart
+                        ) : (
+                        <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                        )}
                     </div>
-                    <div className="product-cost">{plant.cost}</div>
-                    {/*Similarly like the above plant.name show other details like total cost of the products added in the cart*/}
-                    {/*Change le texte du bouton Add to cart en Added to cart quand le bouton est cliqué */}
-                    {addedToCart[plant.name] ? ( // Check if the product is added to cart
-                      <button className="product-button" disabled>
-                        Added to Cart
-                      </button> // Disable the button if the product is added to cart
-                    ) : (
-                      <button
-                        className="product-button"
-                        onClick={() => handleAddToCart(plant)}>
-                        Add to Cart
-                      </button>
-                    )}
-                  </div>
+                    
                 ))}
               </div>
             </div>
