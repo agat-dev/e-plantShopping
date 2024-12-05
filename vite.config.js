@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 export default defineConfig({
-  base: "/shoppingreact",
+  base: "/e-plantShopping/",
   plugins: [react()],
   build: {
     outDir: 'dist',
