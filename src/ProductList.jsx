@@ -3,7 +3,7 @@ import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
 
-export default function ProductList() {
+function ProductList() {
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
@@ -403,3 +403,4 @@ export default function ProductList() {
     </div>
   );
 }
+export default ProductList;
